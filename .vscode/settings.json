@@ -1,0 +1,20 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "fiap",
+            "group": "p3a1",
+            "username": "my_user",
+            "password": "my_password",
+            "database": "my_database"
+        }
+    ]
+
+}

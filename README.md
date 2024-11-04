@@ -11,6 +11,26 @@ The system will:
 - Control irrigation based on sensor readings.
 - (Optional) Offer data visualization through a Python dashboard and weather-based irrigation control using an external API.
 
+## Requirements
+
+- VS Code
+- Docker
+- Python
+
+## Usage
+
+### Database (MySQL)
+
+Open VS Code and follow these steps to set up the MySQL container:
+
+1. Open the Command Palette:
+   - **Ctrl + Shift + P** (Windows/Linux)
+   - **Cmd + Shift + P** (macOS)
+2. Select **Tasks: Run**.
+3. Choose:
+   - **Run MySQL container** to start the database.
+   - **Stop MySQL container** to stop it when done.
+
 ## Resources and References
 
 - **Wokwi Platform**: [Wokwi.com](https://wokwi.com)

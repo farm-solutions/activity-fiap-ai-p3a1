@@ -1,0 +1,27 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run MySQL container",
+            "type": "shell",
+            "command": "docker compose up -d",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "detail": "Run Docker Compose for MySQL in the background"
+        },
+        {
+            "label": "Stop MySQL container",
+            "type": "shell",
+            "command": "docker compose down",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "detail": "Stop Docker Compose for MySQL"
+        }
+    ]
+}
