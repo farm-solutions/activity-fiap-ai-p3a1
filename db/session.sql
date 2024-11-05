@@ -1,24 +1,36 @@
 -- @block Insert a producer
-INSERT INTO Producer (name, location, registration_date) VALUES ('John Doe', '123 Main St, Springfield, IL', '2020-01-01');
+INSERT INTO Producers (name, location, registration_date) VALUES ('John Doe', '123 Main St, Springfield, IL', '2020-01-01');
 
 -- @block Insert Rice crop
-INSERT INTO Crop (name, type, id_producer) VALUES ('Rice', 'Grain', 1);
+INSERT INTO Crops (name, type, id_producer) VALUES ('Rice', 'Grain', 1);
 
 -- @block Insert DHT22 sensor
 
-INSERT INTO Sensor (sensor_type, id_crop) VALUES ('humidity', 1);
+INSERT INTO Sensors (sensor_type, id_crop) VALUES ('humidity', 1);
 
 -- @block Insert a sensor reading
-INSERT INTO Sensor_Reading (id_sensor, reading_value) VALUES (1, 0.5);
+INSERT INTO SensorReadings (id_sensor, reading_value) VALUES (1, 0.5);
 
 -- @block List Producers
-SELECT * FROM Producer;
+SELECT * FROM Producers;
 
 -- @block List Crops
-SELECT * FROM Crop;
+SELECT * FROM Crops;
 
 -- @block List Sensors
-SELECT * FROM Sensor;
+SELECT * FROM Sensors;
 
 -- @block See history of sensor readings
-SELECT * FROM Sensor_Reading;
+SELECT * FROM SensorReadings;
+
+-- @block Drop all tables
+DROP TABLE SensorReadings;
+DROP TABLE Sensors;
+DROP TABLE Crops;
+DROP TABLE Producers;
+
+-- @block Clear all tables
+DELETE FROM SensorReadings;
+DELETE FROM Sensors;
+DELETE FROM Crops;
+DELETE FROM Producers;

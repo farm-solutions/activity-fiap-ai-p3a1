@@ -34,9 +34,12 @@
   - [ ] Historical irrigation records.
 
 ## 5. CRUD
+- [x] Setup `.venv`
+- [x] Setup `.env`
+- [x] Setup SQLAlchemy
 - [ ] Create CRUD operations in Python:
   - [ ] Connect with the SQL database to record sensor readings and irrigation events.
-  - [ ] Implement CRUD operations to create, read, update, and delete sensor data.
+  - [x] Implement CRUD operations to create, read, update, and delete sensor data.
 
 ## 6. Data Collection
 - [ ] Due to Wokwi limitations, **manually copy sensor data** from Wokwi Monitor Serial and import into Python for CRUD.
