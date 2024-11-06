@@ -1,6 +1,10 @@
+from datetime import datetime
+
 from sqlalchemy.exc import SQLAlchemyError
-from models import Producers, Crops, Sensors, SensorReadings, ApplicationAdjustments
+from models import Producers, Crops, Sensors, SensorReadings, ApplicationAdjustments, IrrigationHistory
 from database import Session
+import requests
+import os
 
 def insert_producer(name, location, registration_date):
     session = Session()
@@ -70,3 +74,56 @@ def insert_application_adjustment(water_quantity, nutrient_quantity, id_crop):
         print(f"Error inserting application adjustment: {e}")
     finally:
         session.close()
+
+def insert_irrigation_history(timestamp, status, humidity_value):
+    session = Session()
+    try:
+        new_history = IrrigationHistory(
+            timestamp=timestamp,
+            status=status,
+            humidity_value=humidity_value
+        )
+        session.add(new_history)
+        session.commit()
+        print("Irrigation history record inserted successfully.")
+    except SQLAlchemyError as e:
+        session.rollback()
+        print(f"Error inserting irrigation history record: {e}")
+    finally:
+        session.close()
+
+
+def fetch_weather_forecast(city="São Paulo", country="BR"):
+    api_key = os.getenv("OPENWEATHER_API_KEY")
+    url = f"http://api.openweathermap.org/data/2.5/forecast?q={city},{country}&appid={api_key}&units=metric&lang=pt_br"
+
+    try:
+        response = requests.get(url)
+
+        if response.status_code != 200:
+            print(f"Failed to fetch data. Status code: {response.status_code}")
+            print("Response content:", response.text)
+            return []
+
+        data = response.json()
+        forecast_list = []
+
+        
+        for forecast in data.get('list', [])[:5]:  
+            
+            datetime_obj = datetime.strptime(forecast['dt_txt'], "%Y-%m-%d %H:%M:%S")
+            formatted_datetime = datetime_obj.strftime("%d/%m/%Y %H:%M")
+
+            forecast_list.append({
+                "datetime": formatted_datetime,  
+                "temp": forecast['main'].get('temp'),
+                "humidity": forecast['main'].get('humidity'),
+                "weather": forecast['weather'][0].get('description'),
+                "rain": forecast.get('rain', {}).get('3h', 0)  
+            })
+
+        return forecast_list
+    except requests.RequestException as e:
+        print(f"An error occurred: {e}")
+        return []
+
