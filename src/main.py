@@ -5,7 +5,8 @@ load_dotenv()
 from models import Base
 from datetime import datetime
 from database import engine
-from services import insert_producer, insert_crop, insert_sensor, insert_sensor_reading, insert_application_adjustment
+from services import insert_producer, insert_crop, insert_sensor, insert_sensor_reading, insert_application_adjustment, \
+    insert_irrigation_history
 
 if __name__ == "__main__":
     # Create tables
@@ -21,3 +22,5 @@ if __name__ == "__main__":
     insert_sensor_reading(id_sensor=1, reading_value=75.5)  # Adjust sensor ID as needed
     # Example: Insert an application adjustment
     insert_application_adjustment(water_quantity=100.0, nutrient_quantity=50.0, id_crop=1)  # Adjust crop ID as needed
+
+    insert_irrigation_history(timestamp=datetime.now(), status="Ligado", humidity_value=68.0)
