@@ -1,3 +1,4 @@
+import os
 import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
@@ -5,10 +6,9 @@ import pandas as pd
 import mysql.connector
 import plotly.express as px
 from dotenv import load_dotenv
-import os
-import requests
-
-from src.services import fetch_weather_forecast
+from database import engine
+from services import fetch_weather_forecast
+from models import Base
 
 # Carregar variáveis de ambiente
 load_dotenv()
@@ -16,7 +16,6 @@ load_dotenv()
 # Configuração do Dash
 app = dash.Dash(__name__,
                 external_stylesheets=['https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'])
-
 
 # Função para obter dados de umidade
 def fetch_humidity_data():
@@ -211,4 +210,7 @@ def update_dashboard(n):
 
 # Executa o servidor
 if __name__ == "__main__":
+    # Create tables
+    Base.metadata.create_all(engine)
+
     app.run_server(debug=True)
