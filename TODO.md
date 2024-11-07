@@ -6,20 +6,20 @@
 - [x] Organize project files in GitHub:
 
 ## 2. Setup Sensors on Wokwi
-- [ ] Configure the environment in Wokwi.com with the following:
+- [x] Configure the environment in Wokwi.com with the following:
   - [x] Replace nutrient sensors (P & K) with buttons.
   - [x] Use LDR as a substitute for the pH sensor.
   - [x] Integrate DHT22 for soil moisture measurement.
-  - [ ] Set up a relay to control the irrigation pump.
+  - [x] Set up a relay to control the irrigation pump.
 
 ## 3. Develop ESP32 Code
-- [ ] Write the code for the ESP32 to:
+- [x] Write the code for the ESP32 to:
   - [x] Read data from the buttons and DHT22 sensor.
-  - [ ] Design the decision logic for **when to activate the irrigation pump** based on:
+  - [x] Design the decision logic for **when to activate the irrigation pump** based on:
     - Soil moisture threshold.
     - Nutrient levels (button inputs).
     - pH levels (LDR readings).
-  - [ ] Control the relay for the pump based on sensor readings.
+  - [x] Control the relay for the pump based on sensor readings.
 
 ## 4. Setup Database
 - [x] **Docker Setup**
@@ -29,29 +29,29 @@
 - [x] **Initial SQL Migration**
   - [x] Create an initial migration SQL script to set up the database schema.
   - [x] Add initial session SQL scripts for populating necessary starting data.
-- [ ] Design and implement a SQL database schema for:
-  - [ ] Sensor data (moisture, nutrients, light).
-  - [ ] Historical irrigation records.
+- [x] Design and implement a SQL database schema for:
+  - [x] Sensor data (moisture, nutrients, light).
+  - [x] Historical irrigation records.
 
 ## 5. CRUD
 - [x] Setup `.venv`
 - [x] Setup `.env`
 - [x] Setup SQLAlchemy
-- [ ] Create CRUD operations in Python:
-  - [ ] Connect with the SQL database to record sensor readings and irrigation events.
+- [x] Create CRUD operations in Python:
+  - [x] Connect with the SQL database to record sensor readings and irrigation events.
   - [x] Implement CRUD operations to create, read, update, and delete sensor data.
 
 ## 6. Data Collection
-- [ ] Due to Wokwi limitations, **manually copy sensor data** from Wokwi Monitor Serial and import into Python for CRUD.
+- [x] Due to Wokwi limitations, **manually copy sensor data** from Wokwi Monitor Serial and import into Python for CRUD.
 
 ## 7. Optional Features (If Time Allows)
-- [ ] Explore Dashboard Creation:
-  - [ ] Research libraries for dashboard creation (Streamlit/Dash).
-  - [ ] Implement visualizations for sensor data.
-- [ ] API Integration:
-  - [ ] Identify a suitable public API for weather data (e.g., OpenWeather).
-  - [ ] Implement logic to adjust irrigation based on weather forecasts.
-- [ ] Statistical Analysis in R:
+- [x] Explore Dashboard Creation:
+  - [x] Research libraries for dashboard creation (Streamlit/Dash).
+  - [x] Implement visualizations for sensor data.
+- [x] API Integration:
+  - [x] Identify a suitable public API for weather data (e.g., OpenWeather).
+  - [x] Implement logic to adjust irrigation based on weather forecasts.
+- [] Statistical Analysis in R:
   - [ ] Consider using R for data analysis on irrigation decisions.
 
 ## 8. Documentation
