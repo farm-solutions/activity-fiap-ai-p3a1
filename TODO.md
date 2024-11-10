@@ -58,9 +58,9 @@
 - [ ] Prepare `README.md` file:
   - [ ] Explain project goals and architecture.
   - [ ] Document sensor substitutions and their implications.
-  - [ ] Describe the logic for irrigation control.
-  - [ ] Include images of the circuit setup from Wokwi.
-- [ ] Compile images and files for the GitHub repository.
+  - [x] Describe the logic for irrigation control.
+  - [x] Include images of the circuit setup from Wokwi.
+- [x] Compile images and files for the GitHub repository.
 
 ## 9. Video Demonstration
 - [ ] Record a demo video (5 minutes max):

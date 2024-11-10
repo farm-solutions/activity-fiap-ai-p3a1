@@ -7,6 +7,12 @@
 
 The objective is to develop an automated, intelligent irrigation system that uses real-time data from simulated sensors to optimize water usage based on soil moisture, nutrient levels (P and K), and pH. The system will collect data from a network of simulated sensors on Wokwi.com, store this data in a SQL database, and control irrigation according to sensor readings. Additionally, it will provide data visualization through a Python dashboard and include weather-based irrigation control using an external API.
 
+### Irrigation System
+
+For details on the irrigation control logic, see [docs/irrigation.md](docs/irrigation.md), where we outline how humidity, nutrient levels, and pH conditions are monitored to optimize watering schedules and maintain soil health effectively.
+
+### Circuit
+
 ![Circuit](./assets/circuit.png)
 
 ### Technical Details
