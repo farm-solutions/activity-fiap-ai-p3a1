@@ -5,9 +5,10 @@ from datetime import datetime
 
 Base = declarative_base()
 
+
 class Producers(Base):
     __tablename__ = 'Producers'
-    
+
     id_producer = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(100), nullable=False)
     location = Column(String(255), nullable=False)
@@ -15,9 +16,10 @@ class Producers(Base):
 
     crops = relationship("Crops", back_populates="producer")
 
+
 class Crops(Base):
     __tablename__ = 'Crops'
-    
+
     id_crop = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(100), nullable=False)
     type = Column(String(100), nullable=False)
@@ -27,9 +29,10 @@ class Crops(Base):
     sensors = relationship("Sensors", back_populates="crop")
     application_adjustments = relationship("ApplicationAdjustments", back_populates="crop")
 
+
 class Sensors(Base):
     __tablename__ = 'Sensors'
-    
+
     id_sensor = Column(Integer, primary_key=True, autoincrement=True)
     sensor_type = Column(Enum('humidity', 'pH', 'nutrients'), nullable=False)
     id_crop = Column(Integer, ForeignKey('Crops.id_crop'), nullable=False)
@@ -37,9 +40,10 @@ class Sensors(Base):
     crop = relationship("Crops", back_populates="sensors")
     readings = relationship("SensorReadings", back_populates="sensor")
 
+
 class SensorReadings(Base):
     __tablename__ = 'SensorReadings'
-    
+
     id_reading = Column(Integer, primary_key=True, autoincrement=True)
     id_sensor = Column(Integer, ForeignKey('Sensors.id_sensor'), nullable=False)
     reading_value = Column(Float, nullable=False)
@@ -47,9 +51,10 @@ class SensorReadings(Base):
 
     sensor = relationship("Sensors", back_populates="readings")
 
+
 class ApplicationAdjustments(Base):
     __tablename__ = 'ApplicationAdjustments'
-    
+
     id_adjustment = Column(Integer, primary_key=True, autoincrement=True)
     water_quantity = Column(Float, nullable=False)
     nutrient_quantity = Column(Float, nullable=False)
@@ -57,3 +62,12 @@ class ApplicationAdjustments(Base):
     id_crop = Column(Integer, ForeignKey('Crops.id_crop'), nullable=False)
 
     crop = relationship("Crops", back_populates="application_adjustments")
+
+
+class IrrigationHistory(Base):
+    __tablename__ = 'IrrigationHistory'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    timestamp = Column(TIMESTAMP, default=datetime.utcnow, nullable=False)
+    status = Column(Enum('Ligado', 'Desligado'), nullable=False)
+    humidity_value = Column(Float, nullable=False)
