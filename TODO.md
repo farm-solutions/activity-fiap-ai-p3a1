@@ -55,9 +55,9 @@
   - [ ] Consider using R for data analysis on irrigation decisions.
 
 ## 8. Documentation
-- [ ] Prepare `README.md` file:
-  - [ ] Explain project goals and architecture.
-  - [ ] Document sensor substitutions and their implications.
+- [x] Prepare `README.md` file:
+  - [x] Explain project goals and architecture.
+  - [x] Document sensor substitutions and their implications.
   - [x] Describe the logic for irrigation control.
   - [x] Include images of the circuit setup from Wokwi.
 - [x] Compile images and files for the GitHub repository.

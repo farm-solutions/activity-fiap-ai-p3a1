@@ -11,6 +11,10 @@ The objective is to develop an automated, intelligent irrigation system that use
 
 For details on the irrigation control logic, see [docs/irrigation.md](docs/irrigation.md), where we outline how humidity, nutrient levels, and pH conditions are monitored to optimize watering schedules and maintain soil health effectively.
 
+### Sensor Substitutions
+
+For information on sensor substitutions and their impact on system accuracy, see [docs/sensor-substitutions.md](docs/sensor-substitutions.md), where we explain how alternative sensors like buttons and LDRs were used to simulate nutrient and pH levels, along with the implications for data precision in the irrigation system.
+
 ### Circuit
 
 ![Circuit](./assets/circuit.png)
@@ -32,6 +36,18 @@ For details on the irrigation control logic, see [docs/irrigation.md](docs/irrig
 4. **Integration with OpenWeather API**:
    - Added a dashboard section showing rainfall, humidity, and temperature forecasts using OpenWeather API.
    - **Date and Time Formatting**: Adapted dates to Brazilian format (`dd/mm/yyyy hh:mm`) for better readability.
+
+### Testing
+
+1. **OpenWeather API Connectivity Tests**:
+   - Used `curl` and Python tests to ensure the API connection is functional and that data is correctly formatted.
+
+2. **Dashboard Data Validation**:
+   - Validated dashboard chart and table visualizations.
+   - Checked irrigation recommendation logic and weather forecast display.
+
+3. **Database CRUD Operations**:
+   - Tested insertion, reading, and deletion of data with [SQLTools](https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools), focusing on irrigation history to ensure data accuracy on the dashboard.
 
 ## Installation
 
@@ -111,18 +127,6 @@ cd Cap-1-Construindo-uma-maquina-agricola/
 3. **ESP32**:
    - Project link on Wokwi: [Wokwi Project](https://wokwi.com/projects/413455638981848065)
    - Access the code in the `embedded/` folder.
-
-## Testing
-
-1. **OpenWeather API Connectivity Tests**:
-   - Used `curl` and Python tests to ensure the API connection is functional and that data is correctly formatted.
-
-2. **Dashboard Data Validation**:
-   - Validated dashboard chart and table visualizations.
-   - Checked irrigation recommendation logic and weather forecast display.
-
-3. **Database CRUD Operations**:
-   - Tested insertion, reading, and deletion of data with [SQLTools](https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools), focusing on irrigation history to ensure data accuracy on the dashboard.
 
 ## Group 4 - Members:
 
