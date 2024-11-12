@@ -85,15 +85,15 @@ cd activity-fiap-ai-p3a1/
    ```
    Edit the `.env` file to set environment variables as needed, especially `OPENWEATHER_API_KEY`. For more information on OpenWeatherAPI, see [here](https://openweathermap.org/api).
 
-2. **Database Setup (MySQL)**:
+2. **Database Setup (Oracle)**:
    - Open VS Code and follow these steps:
      1. Open the Command Palette:
         - **Ctrl + Shift + P** (Windows/Linux)
         - **Cmd + Shift + P** (macOS)
      2. Select **Tasks: Run**.
      3. Choose:
-        - **Run MySQL container** to start the database.
-        - **Stop MySQL container** to stop it when done.
+        - **Run Oracle container** to start the database.
+        - **Stop Oracle container** to stop it when done.
 
 3. **Create and Activate Virtual Environment**:
    ```sh
