@@ -128,6 +128,10 @@ cd Cap-1-Construindo-uma-maquina-agricola/
    - Project link on Wokwi: [Wokwi Project](https://wokwi.com/projects/413455638981848065)
    - Access the code in the `embedded/` folder.
 
+## Observations
+
+- MySQL integration needs SQL adjustments.
+
 ## Group 4 - Members:
 
 - [Caio Rodrigues Castro](https://www.linkedin.com/in/caiorcastro/) 
