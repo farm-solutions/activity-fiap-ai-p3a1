@@ -65,8 +65,9 @@
 
 ## 9. Video Demonstration
 - [ ] Record a demo video (5 minutes max):
+  - [x] Show the dashboard
+  - [x] Show docs
   - [ ] Show the functionality of the irrigation system.
-  - [ ] Show the dashboard
 - [ ] Upload the video to YouTube (unlisted).
 - [ ] Link to the video demonstration in the repository.
 
