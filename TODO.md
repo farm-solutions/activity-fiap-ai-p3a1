@@ -32,6 +32,7 @@
 - [x] Design and implement a SQL database schema for:
   - [x] Sensor data (moisture, nutrients, light).
   - [x] Historical irrigation records.
+- [x] Migrate to Oracle
 
 ## 5. CRUD
 - [x] Setup `.venv`
@@ -65,6 +66,7 @@
 ## 9. Video Demonstration
 - [ ] Record a demo video (5 minutes max):
   - [ ] Show the functionality of the irrigation system.
+  - [ ] Show the dashboard
 - [ ] Upload the video to YouTube (unlisted).
 - [ ] Link to the video demonstration in the repository.
 
