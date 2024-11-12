@@ -71,8 +71,8 @@ Consider installing these VS Code extensions:
 To clone the repository to your local machine:
 
 ```sh
-git clone https://github.com/farm-solutions/Cap-1-Construindo-uma-maquina-agricola.git
-cd Cap-1-Construindo-uma-maquina-agricola/
+git clone https://github.com/farm-solutions/activity-fiap-ai-p3a1.git
+cd activity-fiap-ai-p3a1/
 ```
 
 ## Usage
