@@ -65,7 +65,6 @@
 ## 9. Video Demonstration
 - [ ] Record a demo video (5 minutes max):
   - [ ] Show the functionality of the irrigation system.
-  - [ ] Explain the sensor readings and response.
 - [ ] Upload the video to YouTube (unlisted).
 - [ ] Link to the video demonstration in the repository.
 
