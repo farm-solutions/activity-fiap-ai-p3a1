@@ -1,66 +1,56 @@
-import os
+from dotenv import load_dotenv
+# Carregar variáveis de ambiente
+load_dotenv()
+
 import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
 import pandas as pd
-import mysql.connector
 import plotly.express as px
-from dotenv import load_dotenv
 from database import engine
+from sqlalchemy import text
 from services import fetch_weather_forecast
 from models import Base
-
-# Carregar variáveis de ambiente
-load_dotenv()
+from sqlalchemy.orm import sessionmaker
 
 # Configuração do Dash
 app = dash.Dash(__name__,
                 external_stylesheets=['https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'])
 
+conn = engine.connect()
+
 # Função para obter dados de umidade
 def fetch_humidity_data():
-    conn = mysql.connector.connect(
-        host=os.getenv("DB_HOST"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME")
-    )
     query = """
     SELECT R.reading_value,
            R.reading_date,
            S.sensor_type,
-           C.name as crop_name,
-           P.name as producer_name,
+           C.name AS crop_name,
+           P.name AS producer_name,
            P.location
-    FROM SensorReadings R
-             LEFT JOIN Sensors S ON R.id_sensor = S.id_sensor
-             LEFT JOIN Crops C ON S.id_crop = C.id_crop
-             INNER JOIN Producers P ON P.id_producer = C.id_producer
+    FROM "SensorReadings" R
+             LEFT JOIN "Sensors" S ON R.id_sensor = S.id_sensor
+             LEFT JOIN "Crops" C ON S.id_crop = C.id_crop
+             INNER JOIN "Producers" P ON P.id_producer = C.id_producer
     WHERE S.sensor_type = 'humidity'
+          AND ROWNUM <= 100
     ORDER BY R.reading_date ASC
-    LIMIT 100
     """
     df = pd.read_sql(query, conn)
-    conn.close()
     return df
 
 
 # Função para obter o histórico de irrigação
 def fetch_irrigation_history():
-    conn = mysql.connector.connect(
-        host=os.getenv("DB_HOST"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME")
-    )
     query = """
+    SELECT * FROM (
     SELECT timestamp, status, humidity_value
-    FROM IrrigationHistory
-    ORDER BY timestamp DESC
-    LIMIT 20
+        FROM "IrrigationHistory"
+        ORDER BY timestamp DESC
+)
+WHERE ROWNUM <= 20
     """
     df = pd.read_sql(query, conn)
-    conn.close()
     return df
 
 
@@ -207,10 +197,33 @@ def update_dashboard(n):
 
     return line_fig, bar_fig, area_fig, recommendation_text, recommendation_style, history_table, forecast_table
 
+def test():
+    # Insert a sample into Test2
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    print("Inserting sample into IrrigationHistory...")
+    # oracleDB
+    session.execute(text("""
+    INSERT INTO "IrrigationHistory" (id, timestamp, status, humidity_value)
+    VALUES (1, TO_DATE('2021-09-01 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Ligado', 80.0)
+    """))
+    session.commit()
+    session.close()
+
+    # Query IrrigationHistory
+    print("Querying IrrigationHistory...")
+    crops = session.execute(text("""
+    SELECT * FROM "IrrigationHistory"
+    """)).fetchall()
+    print(crops)
 
 # Executa o servidor
 if __name__ == "__main__":
     # Create tables
+    print("Creating tables...")
     Base.metadata.create_all(engine)
+
+    # test()
 
     app.run_server(debug=True)

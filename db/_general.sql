@@ -1,11 +1,15 @@
 -- @block Drop all tables
-DROP TABLE SensorReadings;
-DROP TABLE Sensors;
-DROP TABLE Crops;
-DROP TABLE Producers;
+DROP TABLE "IrrigationHistory";
+DROP TABLE "SensorReadings";
+DROP TABLE "ApplicationAdjustments";
+DROP TABLE "Sensors";
+DROP TABLE "Crops";
+DROP TABLE "Producers";
 
 -- @block Clear all tables
-DELETE FROM SensorReadings;
-DELETE FROM Sensors;
-DELETE FROM Crops;
-DELETE FROM Producers;
+DELETE FROM "IrrigationHistory";
+DELETE FROM "ApplicationAdjustments";
+DELETE FROM "SensorReadings";
+DELETE FROM "Sensors";
+DELETE FROM "Crops";
+DELETE FROM "Producers";

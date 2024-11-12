@@ -9,11 +9,29 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "name": "fiap",
+            "name": "mysql",
             "group": "p3a1",
             "username": "my_user",
             "password": "my_password",
             "database": "my_database"
+        },
+        {
+            "oracleOptions": {
+                "privilege": "Normal",
+                "thickMode": false,
+                "autoCommit": false,
+                "lowerCase": false,
+                "limitPrefetchRows": false
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 1521,
+            "driver": "Oracle",
+            "name": "oracle",
+            "database": "my_database",
+            "username": "my_user",
+            "password": "my_password",
+            "group": "p3a1"
         }
     ],
     "files.exclude": {

@@ -1,9 +1,16 @@
+from dotenv import load_dotenv
+# Load environment variables from .env file
+load_dotenv()
+
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 # Database configuration
-DATABASE_URL = f"mysql+pymysql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}/{os.getenv('DB_NAME')}"
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if(DATABASE_URL is None):
+    raise Exception("DATABASE_URL environment variable not set")
 
 # SQLAlchemy setup
 engine = create_engine(DATABASE_URL)
