@@ -25,32 +25,32 @@ def fetch_humidity_data():
     SELECT R.reading_value,
            R.reading_date,
            S.sensor_type,
-           C.name as crop_name,
-           P.name as producer_name,
+           C.name AS crop_name,
+           P.name AS producer_name,
            P.location
     FROM "SensorReadings" R
-             LEFT JOIN Sensors S ON R.id_sensor = S.id_sensor
-             LEFT JOIN Crops C ON S.id_crop = C.id_crop
-             INNER JOIN Producers P ON P.id_producer = C.id_producer
+             LEFT JOIN "Sensors" S ON R.id_sensor = S.id_sensor
+             LEFT JOIN "Crops" C ON S.id_crop = C.id_crop
+             INNER JOIN "Producers" P ON P.id_producer = C.id_producer
     WHERE S.sensor_type = 'humidity'
+          AND ROWNUM <= 100
     ORDER BY R.reading_date ASC
-    LIMIT 100
     """
     df = pd.read_sql(query, conn)
-    conn.close()
     return df
 
 
 # Função para obter o histórico de irrigação
 def fetch_irrigation_history():
     query = """
+    SELECT * FROM (
     SELECT timestamp, status, humidity_value
-    FROM "IrrigationHistory"
-    ORDER BY timestamp DESC
-    LIMIT 20
+        FROM "IrrigationHistory"
+        ORDER BY timestamp DESC
+)
+WHERE ROWNUM <= 20
     """
     df = pd.read_sql(query, conn)
-    conn.close()
     return df
 
 

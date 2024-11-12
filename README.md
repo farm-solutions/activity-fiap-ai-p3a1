@@ -46,8 +46,8 @@ For information on sensor substitutions and their impact on system accuracy, see
    - Validated dashboard chart and table visualizations.
    - Checked irrigation recommendation logic and weather forecast display.
 
-3. **Database CRUD Operations**:
-   - Tested insertion, reading, and deletion of data with [SQLTools](https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools), focusing on irrigation history to ensure data accuracy on the dashboard.
+3. **Database Read Operations**:
+   - Tested reading of data with [SQLTools](https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools), focusing on irrigation history to ensure data accuracy on the dashboard.
 
 ## Installation
 
@@ -65,6 +65,7 @@ Additional tools for setup:
 Consider installing these VS Code extensions:
 
 - [SQLTools](https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools) (optional)
+  - [SQLTools Oracle Driver](https://marketplace.visualstudio.com/items?itemName=Oracle.oracledevtools)
   - [SQLTools MySQL Driver](https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools-driver-mysql)
 
 To clone the repository to your local machine:
@@ -106,11 +107,10 @@ cd Cap-1-Construindo-uma-maquina-agricola/
    ```
 
 5. **Insert Sample Data**:
-   - Execute the SQL scripts using [SQLTools](https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools):
-     - `db/farm.sql`
-     - `db/irrigation_history.sql`
-     - `db/sensors.sql`
-   - We also have a Python script to insert sample data: `src/insert_sample.py`.
+   - Execute the Python script:
+      ```bash
+      python src/populate_db.py
+      ```
 
 ### Solutions
 

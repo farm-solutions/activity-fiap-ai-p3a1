@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Float, Integer, String, Enum, TIMESTAMP, ForeignKey, Identity
+from sqlalchemy import Column, Float, Integer, String, Enum, TIMESTAMP, ForeignKey, Identity, func
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from datetime import datetime
@@ -12,7 +12,7 @@ class Producers(Base):
     id_producer = Column(Integer, Identity(start=1), primary_key=True, autoincrement=True)
     name = Column(String(100), nullable=False)
     location = Column(String(255), nullable=False)
-    registration_date = Column(TIMESTAMP, default=datetime.utcnow)
+    registration_date = Column(TIMESTAMP, server_default=func.now())
 
     crops = relationship("Crops", back_populates="producer")
 
@@ -47,7 +47,7 @@ class SensorReadings(Base):
     id_reading = Column(Integer, Identity(start=1), primary_key=True, autoincrement=True)
     id_sensor = Column(Integer, ForeignKey('Sensors.id_sensor'), nullable=False)
     reading_value = Column(Float, nullable=False)
-    reading_date = Column(TIMESTAMP, default=datetime.utcnow)
+    reading_date = Column(TIMESTAMP, server_default=func.now())
 
     sensor = relationship("Sensors", back_populates="readings")
 
@@ -58,7 +58,7 @@ class ApplicationAdjustments(Base):
     id_adjustment = Column(Integer, Identity(start=1), primary_key=True, autoincrement=True)
     water_quantity = Column(Float, nullable=False)
     nutrient_quantity = Column(Float, nullable=False)
-    adjustment_date = Column(TIMESTAMP, default=datetime.utcnow)
+    adjustment_date = Column(TIMESTAMP, server_default=func.now())
     id_crop = Column(Integer, ForeignKey('Crops.id_crop'), nullable=False)
 
     crop = relationship("Crops", back_populates="application_adjustments")
@@ -68,6 +68,6 @@ class IrrigationHistory(Base):
     __tablename__ = 'IrrigationHistory'
 
     id = Column(Integer, Identity(start=1), primary_key=True, autoincrement=True)
-    timestamp = Column(TIMESTAMP, default=datetime.utcnow, nullable=False)
+    timestamp = Column(TIMESTAMP, server_default=func.now(), nullable=False)
     status = Column(Enum('Ligado', 'Desligado'), nullable=False)
     humidity_value = Column(Float, nullable=False)
